@@ -636,6 +636,9 @@ section{padding-block:var(--section)}
 }
 
 /* ---------- VALUE / WHY ---------- */
+.values{
+  background:#BACB99;
+}
 .values .container > header{max-width:640px; margin-bottom:64px}
 .values-grid{
   display:grid; grid-template-columns:repeat(4, 1fr); gap:28px;
