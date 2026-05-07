@@ -509,31 +509,14 @@ section{padding-block:var(--section)}
   color:#fff;
   overflow:hidden;
 }
-/* Background video container */
-.hero-video{
-  position:absolute; inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:0;
-}
-.hero-video iframe{
-  position:absolute;
-  top:50%; left:50%;
-  width:max(100%, 177.78vh);
-  height:max(100%, 56.25vw);
-  transform:translate(-50%, -50%);
-  pointer-events:none;
-  border:0;
-}
-/* Dark overlay — keeps text readable on top of video */
+/* Subtle dark overlay — light when on green, stronger when image is used */
 .hero::before{
   content:"";
   position:absolute; inset:0;
-  background:linear-gradient(110deg, rgba(94,154,61,.55) 0%, rgba(77,127,49,.4) 100%);
+  background:linear-gradient(110deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.08) 100%);
   pointer-events:none;
-  z-index:1;
 }
-.hero > .container{position:relative; z-index:2}
+.hero > .container{position:relative; z-index:1}
 
 .hero-grid{
   display:grid;
