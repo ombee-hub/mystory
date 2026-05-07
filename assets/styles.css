@@ -676,6 +676,28 @@ section{padding-block:var(--section)}
 .step p{color:var(--ink-soft); font-size:.97rem; margin:0}
 
 /* ---------- BOOKS ---------- */
+.books{
+  background:linear-gradient(160deg, var(--btn) 0%, var(--btn-hover) 100%);
+  color:#fff;
+}
+.books .eyebrow{color:rgba(255,255,255,.92)}
+.books .eyebrow::before{background:rgba(255,255,255,.6)}
+.books h2{color:#fff}
+.books h2:first-letter{color:#fff}
+.books .divider{
+  background:rgba(255,255,255,.6);
+  filter:none;
+}
+.books .container > header p{color:rgba(255,255,255,.92)}
+.books .btn-ghost{
+  border-color:rgba(255,255,255,.55);
+  color:#fff;
+}
+.books .btn-ghost:hover{
+  border-color:#fff;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+}
 .books-header{
   display:flex; justify-content:space-between; align-items:flex-end;
   gap:48px; flex-wrap:wrap;
