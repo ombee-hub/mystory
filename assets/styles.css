@@ -931,6 +931,14 @@ section{padding-block:var(--section)}
 }
 .contact-card > .eyebrow{margin-bottom:12px}
 .contact-card > h2{margin-bottom:18px}
+
+/* Center heading area (eyebrow + h2 + intro) of contact cards */
+.contact-card{text-align:center}
+.contact-card form,
+.contact-card ul,
+.contact-card .field,
+.contact-card label{text-align:start}
+.contact-card > .eyebrow{justify-content:center}
 .contact-info p{color:var(--ink-soft); font-size:1.02rem}
 .contact-info ul{list-style:none; padding:0; margin:32px 0 0; display:grid; gap:18px}
 .contact-info li{display:flex; gap:14px; align-items:flex-start}
