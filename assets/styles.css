@@ -61,26 +61,6 @@ h3{
   font-weight:600;
 }
 
-/* H2 — designed with a subtle decorative underline accent */
-h2{
-  position:relative;
-  display:inline-block;
-  padding-block-end:6px;
-}
-h2::after{
-  content:"";
-  position:absolute;
-  bottom:-2px;
-  inset-inline-start:0;
-  width:36px;
-  height:3px;
-  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 60%, var(--btn) 60%, var(--btn) 100%);
-  border-radius:2px;
-  opacity:.9;
-}
-/* Hero h1 doesn't need the underline since hero is special */
-.hero h1::after,
-.page-header h1::after{display:none}
 
 /* Page header — centered with double-line frame */
 .page-header h1{
@@ -122,19 +102,15 @@ section{padding-block:var(--section)}
   margin-bottom:18px;
   display:inline-flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
 }
-/* Marker: small square with green inner dot */
 .eyebrow::before{
   content:"";
   display:inline-block;
-  width:14px; height:14px;
-  background:
-    radial-gradient(circle at center, var(--btn) 2.5px, transparent 3px),
-    linear-gradient(45deg, transparent 49%, var(--ink) 49% 51%, transparent 51%) center / 100% 1px no-repeat,
-    linear-gradient(-45deg, transparent 49%, var(--ink) 49% 51%, transparent 51%) center / 100% 1px no-repeat;
+  width:18px; height:1px;
+  background:var(--ink);
+  opacity:.4;
   flex:0 0 auto;
-  opacity:.85;
 }
 
 /* Divider — designed line + dot + line ornament */
