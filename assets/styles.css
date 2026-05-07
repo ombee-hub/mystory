@@ -455,16 +455,37 @@ section{padding-block:var(--section)}
 /* ---------- PAGE HEADER (inner pages) ---------- */
 .page-header{
   padding-block: clamp(60px, 9vw, 110px) clamp(40px, 6vw, 70px);
-  border-bottom:1px solid var(--line);
+  background:linear-gradient(160deg, var(--btn) 0%, var(--btn-hover) 100%);
+  color:#fff;
   text-align:center;
+  position:relative;
+  overflow:hidden;
 }
-.page-header .eyebrow{margin-bottom:14px}
-.page-header h1{font-size:clamp(2.2rem, 4.5vw, 3.6rem); margin-bottom:18px}
+.page-header::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(110deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.08) 100%);
+  pointer-events:none;
+}
+.page-header > .container{position:relative; z-index:1}
+.page-header h1{
+  font-size:clamp(2.2rem, 4.5vw, 3.6rem);
+  margin-bottom:18px;
+  color:#fff;
+}
+.page-header .eyebrow{
+  margin-bottom:14px;
+  color:rgba(255,255,255,.92);
+}
+.page-header .eyebrow::before{background:rgba(255,255,255,.6)}
 .page-header p{
-  color:var(--ink-soft); font-size:1.1rem;
+  color:rgba(255,255,255,.95); font-size:1.1rem;
   max-width:60ch; margin:0 auto;
 }
-.page-header .divider{margin:24px auto}
+.page-header .divider{
+  margin:24px auto;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 10'%3E%3Cline x1='0' y1='5' x2='30' y2='5' stroke='%23ffffff' stroke-width='1' stroke-linecap='round' opacity='0.7'/%3E%3Ccircle cx='40' cy='5' r='3' fill='%23ffffff'/%3E%3Ccircle cx='40' cy='5' r='5.5' fill='none' stroke='%23ffffff' stroke-width='0.7' opacity='0.4'/%3E%3Cline x1='50' y1='5' x2='80' y2='5' stroke='%23ffffff' stroke-width='1' stroke-linecap='round' opacity='0.7'/%3E%3C/svg%3E") no-repeat center / 80px 10px;
+}
 
 /* ---------- BUTTONS ---------- */
 .btn{
