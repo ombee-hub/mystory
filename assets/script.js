@@ -226,6 +226,103 @@ function handleSubmit(e){
 })();
 
 // =========================================
+// BOOKS DROPDOWN — wraps the "ספרים" nav link with a dropdown
+// =========================================
+(() => {
+  const navLinks = document.getElementById('navLinks');
+  if (!navLinks) return;
+
+  // Find the books link
+  const allLinks = Array.from(navLinks.querySelectorAll('a'));
+  const booksLink = allLinks.find(a => {
+    const href = a.getAttribute('href') || '';
+    return href === 'books.html' || href === '../books.html';
+  });
+  if (!booksLink) return;
+
+  // Detect path context (root or books/ subfolder)
+  const inBooksFolder = /\/books\/[^/]+\.html$/.test(window.location.pathname);
+  const dataPrefix = inBooksFolder ? '../' : '';
+  const linkPrefix = inBooksFolder ? '' : 'books/';
+
+  // Wrap link in dropdown container
+  const dropdown = document.createElement('div');
+  dropdown.className = 'nav-dropdown';
+  booksLink.parentNode.insertBefore(dropdown, booksLink);
+  booksLink.classList.add('nav-dropdown-link');
+
+  // Move link into dropdown
+  dropdown.appendChild(booksLink);
+
+  // Add toggle button (chevron) — separate so mobile can tap it
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-dropdown-toggle';
+  toggle.setAttribute('aria-label', 'הצג רשימת ספרים');
+  toggle.innerHTML = `<svg class="nav-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
+  dropdown.appendChild(toggle);
+
+  // Add dropdown menu (will be populated after data loads)
+  const menu = document.createElement('div');
+  menu.className = 'nav-dropdown-menu';
+  dropdown.appendChild(menu);
+
+  // Toggle click → open/close dropdown
+  toggle.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+  });
+
+  // Click outside closes
+  document.addEventListener('click', e => {
+    if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+  });
+  // ESC key closes
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') dropdown.classList.remove('open');
+  });
+
+  // Load books data and populate
+  const populateMenu = () => {
+    if (!window.BOOKS_DATA) return;
+    menu.innerHTML = `
+      <div class="nav-dropdown-card">
+        <div class="nav-dropdown-header">
+          <span class="eyebrow">סיפורי חיים</span>
+        </div>
+        <div class="nav-dropdown-list"></div>
+        <div class="nav-dropdown-footer">
+          <a href="${inBooksFolder ? '../books.html' : 'books.html'}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 12H5"/>
+              <path d="M12 19l-7-7 7-7"/>
+            </svg>
+            <span>לכל הספרים</span>
+          </a>
+        </div>
+      </div>
+    `;
+    const list = menu.querySelector('.nav-dropdown-list');
+    window.BOOKS_DATA.forEach(book => {
+      const link = document.createElement('a');
+      link.href = `${linkPrefix}${book.id}.html`;
+      link.textContent = book.title;
+      list.appendChild(link);
+    });
+  };
+
+  if (window.BOOKS_DATA) {
+    populateMenu();
+  } else {
+    const script = document.createElement('script');
+    script.src = `${dataPrefix}assets/books-data.js`;
+    script.onload = populateMenu;
+    document.head.appendChild(script);
+  }
+})();
+
+// =========================================
 // COOKIE CONSENT BANNER
 // =========================================
 (() => {
