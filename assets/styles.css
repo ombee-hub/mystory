@@ -688,7 +688,12 @@ section{padding-block:var(--section)}
   background:rgba(255,255,255,.6);
   filter:none;
 }
-.books .container > header p{color:rgba(255,255,255,.92)}
+.books .container > header p,
+.books .books-intro{
+  color:rgba(255,255,255,.92);
+  font-size:1.05rem;
+  max-width:46ch;
+}
 .books .btn-ghost{
   border-color:rgba(255,255,255,.55);
   color:#fff;
