@@ -929,6 +929,7 @@ section{padding-block:var(--section)}
 }
 .contact-info.contact-card{
   background: linear-gradient(160deg, rgba(94,154,61,.06) 0%, #FAFBF8 50%, #fff 100%);
+  align-self:center;
 }
 .contact-card > .eyebrow{margin-bottom:12px}
 .contact-card > h2{margin-bottom:18px}
