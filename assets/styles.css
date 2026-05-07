@@ -61,30 +61,40 @@ h3{
   font-weight:600;
 }
 
-/* Accent first letter on section headings — subtle drop-cap effect */
-section h2:first-letter{
-  color:var(--btn);
-  font-weight:800;
-}
-
-/* Decorative ornament before main section h2 (when used with .ornate class or in headers) */
-.ornate-heading{
+/* H2 — designed with a subtle decorative underline accent */
+h2{
   position:relative;
   display:inline-block;
-  padding-block-start:18px;
+  padding-block-end:6px;
 }
-.ornate-heading::before{
+h2::after{
   content:"";
   position:absolute;
-  top:0;
+  bottom:-2px;
   inset-inline-start:0;
-  width:32px; height:8px;
-  background:
-    radial-gradient(circle at 4px 4px, var(--ink) 2px, transparent 2.5px),
-    radial-gradient(circle at 16px 4px, var(--ink) 2px, transparent 2.5px),
-    radial-gradient(circle at 28px 4px, var(--btn) 2.5px, transparent 3px);
-  background-repeat:no-repeat;
-  opacity:.85;
+  width:36px;
+  height:3px;
+  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 60%, var(--btn) 60%, var(--btn) 100%);
+  border-radius:2px;
+  opacity:.9;
+}
+/* Hero h1 doesn't need the underline since hero is special */
+.hero h1::after,
+.page-header h1::after{display:none}
+
+/* Page header — centered with double-line frame */
+.page-header h1{
+  position:relative;
+  display:inline-block;
+  padding-block:14px 4px;
+}
+.page-header h1::before{
+  content:"";
+  display:block;
+  width:80px;
+  height:8px;
+  margin:0 auto 22px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8'%3E%3Cline x1='0' y1='4' x2='30' y2='4' stroke='%231F1D1A' stroke-width='1' opacity='0.5'/%3E%3Cpath d='M37 4 L40 1 L43 4 L40 7 Z' fill='%235E9A3D'/%3E%3Cline x1='50' y1='4' x2='80' y2='4' stroke='%231F1D1A' stroke-width='1' opacity='0.5'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 /* Subtle italic accent class — for stylized words */
@@ -104,31 +114,36 @@ p{margin:0 0 1em}
 section{padding-block:var(--section)}
 .eyebrow{
   font-family:var(--sans);
-  font-size:.76rem;
-  letter-spacing:.24em;
+  font-size:.74rem;
+  letter-spacing:.28em;
   text-transform:uppercase;
   color:var(--ink-soft);
-  font-weight:600;
-  margin-bottom:20px;
+  font-weight:700;
+  margin-bottom:18px;
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
-.eyebrow::after{
+/* Marker: small square with green inner dot */
+.eyebrow::before{
   content:"";
   display:inline-block;
-  width:6px; height:6px;
-  border-radius:50%;
-  background:var(--btn);
+  width:14px; height:14px;
+  background:
+    radial-gradient(circle at center, var(--btn) 2.5px, transparent 3px),
+    linear-gradient(45deg, transparent 49%, var(--ink) 49% 51%, transparent 51%) center / 100% 1px no-repeat,
+    linear-gradient(-45deg, transparent 49%, var(--ink) 49% 51%, transparent 51%) center / 100% 1px no-repeat;
   flex:0 0 auto;
-}
-.divider{
-  width:42px;
-  height:1px;
-  background:var(--ink);
-  margin:22px 0;
-  border:0;
   opacity:.85;
+}
+
+/* Divider — designed line + dot + line ornament */
+.divider{
+  width:80px;
+  height:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 10'%3E%3Cline x1='0' y1='5' x2='30' y2='5' stroke='%231F1D1A' stroke-width='1' stroke-linecap='round' opacity='0.55'/%3E%3Ccircle cx='40' cy='5' r='3' fill='%235E9A3D'/%3E%3Ccircle cx='40' cy='5' r='5.5' fill='none' stroke='%235E9A3D' stroke-width='0.7' opacity='0.4'/%3E%3Cline x1='50' y1='5' x2='80' y2='5' stroke='%231F1D1A' stroke-width='1' stroke-linecap='round' opacity='0.55'/%3E%3C/svg%3E") no-repeat center / 80px 10px;
+  margin:26px 0;
+  border:0;
 }
 
 /* ---------- NAV ---------- */
