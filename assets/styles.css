@@ -914,9 +914,10 @@ section{padding-block:var(--section)}
 .faq-item.open .faq-answer{padding-bottom:24px}
 
 /* ---------- CONTACT ---------- */
+.contact{padding-bottom:clamp(40px, 5vw, 70px)}
 .contact-grid{
   display:grid; grid-template-columns: 1fr 1.1fr; gap:32px;
-  margin-top:56px;
+  margin-top:48px;
   align-items:start;
 }
 .contact-card{
