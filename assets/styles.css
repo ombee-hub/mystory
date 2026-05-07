@@ -500,20 +500,21 @@ section{padding-block:var(--section)}
   padding-top: clamp(80px, 11vw, 150px);
   padding-bottom: clamp(80px, 11vw, 150px);
   position:relative;
-  /* Default: green gradient. To use an image: style="--hero-image:url('images/your-photo.jpg')" */
+  /* Default: photo of Smadar with client. To replace, change --hero-image */
+  --hero-image: url('images/smadar-with-client.png');
   background:
-    var(--hero-image, none),
-    linear-gradient(160deg, var(--btn) 0%, var(--btn-hover) 100%);
+    var(--hero-image),
+    linear-gradient(160deg, #2C2C2C 0%, #4A4A4A 100%);
   background-size:cover;
   background-position:center;
   color:#fff;
   overflow:hidden;
 }
-/* Subtle dark overlay if image is used (improves text contrast) */
+/* Dark overlay for text legibility on top of photo */
 .hero::before{
   content:"";
   position:absolute; inset:0;
-  background:linear-gradient(135deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.05) 100%);
+  background:linear-gradient(110deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.25) 100%);
   pointer-events:none;
 }
 .hero > .container{position:relative; z-index:1}
