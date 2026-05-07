@@ -60,6 +60,39 @@ h3{
   line-height:1.3;
   font-weight:600;
 }
+
+/* Accent first letter on section headings — subtle drop-cap effect */
+section h2:first-letter{
+  color:var(--btn);
+  font-weight:800;
+}
+
+/* Decorative ornament before main section h2 (when used with .ornate class or in headers) */
+.ornate-heading{
+  position:relative;
+  display:inline-block;
+  padding-block-start:18px;
+}
+.ornate-heading::before{
+  content:"";
+  position:absolute;
+  top:0;
+  inset-inline-start:0;
+  width:32px; height:8px;
+  background:
+    radial-gradient(circle at 4px 4px, var(--ink) 2px, transparent 2.5px),
+    radial-gradient(circle at 16px 4px, var(--ink) 2px, transparent 2.5px),
+    radial-gradient(circle at 28px 4px, var(--btn) 2.5px, transparent 3px);
+  background-repeat:no-repeat;
+  opacity:.85;
+}
+
+/* Subtle italic accent class — for stylized words */
+.italic-accent{
+  font-style:italic;
+  font-weight:500;
+  color:var(--accent-d);
+}
 p{margin:0 0 1em}
 
 .container{
@@ -71,44 +104,31 @@ p{margin:0 0 1em}
 section{padding-block:var(--section)}
 .eyebrow{
   font-family:var(--sans);
-  font-size:.78rem;
+  font-size:.76rem;
   letter-spacing:.24em;
   text-transform:uppercase;
-  color:var(--btn);
+  color:var(--ink-soft);
   font-weight:600;
-  margin-bottom:18px;
+  margin-bottom:20px;
   display:inline-flex;
   align-items:center;
   gap:10px;
-  position:relative;
 }
-.eyebrow::before{
+.eyebrow::after{
   content:"";
   display:inline-block;
-  width:24px; height:2px;
-  background:linear-gradient(90deg, var(--btn), transparent);
-  border-radius:2px;
-  flex:0 0 auto;
-}
-.divider{
-  width:56px;
-  height:2px;
-  background:linear-gradient(90deg, var(--btn) 0%, var(--accent) 70%, transparent 100%);
-  border-radius:2px;
-  margin:24px 0;
-  border:0;
-  position:relative;
-}
-.divider::after{
-  content:"";
-  position:absolute;
-  inset-inline-end:-4px;
-  top:50%;
-  transform:translateY(-50%);
   width:6px; height:6px;
   border-radius:50%;
   background:var(--btn);
-  box-shadow:0 0 0 3px rgba(94,154,61,.15);
+  flex:0 0 auto;
+}
+.divider{
+  width:42px;
+  height:1px;
+  background:var(--ink);
+  margin:22px 0;
+  border:0;
+  opacity:.85;
 }
 
 /* ---------- NAV ---------- */
@@ -498,21 +518,21 @@ section{padding-block:var(--section)}
 }
 .hero h1 small{
   display:flex; align-items:center; gap:18px;
-  font-size:.4em;
+  font-size:.42em;
   font-family:var(--sans); font-weight:400;
   font-style:italic;
-  letter-spacing:.02em;
-  color:var(--btn);
+  letter-spacing:.01em;
+  color:var(--ink-soft);
   margin-top:28px;
   line-height:1.4;
 }
 .hero h1 small::before{
   content:"";
   display:inline-block;
-  width:48px; height:1.5px;
-  background:linear-gradient(90deg, var(--btn), transparent);
+  width:50px; height:1px;
+  background:var(--ink);
+  opacity:.5;
   flex:0 0 auto;
-  border-radius:2px;
 }
 .hero p.lead{
   font-size:1.18rem;
