@@ -497,23 +497,42 @@ section{padding-block:var(--section)}
 
 /* ---------- HERO (home only) ---------- */
 .hero{
-  padding-top: clamp(60px, 8vw, 110px);
-  padding-bottom: clamp(60px, 8vw, 110px);
+  padding-top: clamp(80px, 11vw, 150px);
+  padding-bottom: clamp(80px, 11vw, 150px);
   position:relative;
+  /* Default: green gradient. To use an image: style="--hero-image:url('images/your-photo.jpg')" */
+  background:
+    var(--hero-image, none),
+    linear-gradient(160deg, var(--btn) 0%, var(--btn-hover) 100%);
+  background-size:cover;
+  background-position:center;
+  color:#fff;
+  overflow:hidden;
 }
+/* Subtle dark overlay if image is used (improves text contrast) */
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.05) 100%);
+  pointer-events:none;
+}
+.hero > .container{position:relative; z-index:1}
+
 .hero-grid{
   display:grid;
-  grid-template-columns: 1.05fr .95fr;
+  grid-template-columns: 1fr;
   gap: clamp(40px, 6vw, 90px);
   align-items:center;
+  max-width:780px;
 }
+.hero h1{color:#fff}
 .hero h1 small{
   display:flex; align-items:center; gap:18px;
   font-size:.42em;
   font-family:var(--sans); font-weight:400;
   font-style:italic;
   letter-spacing:.01em;
-  color:var(--ink-soft);
+  color:rgba(255,255,255,.92);
   margin-top:28px;
   line-height:1.4;
 }
@@ -521,10 +540,36 @@ section{padding-block:var(--section)}
   content:"";
   display:inline-block;
   width:50px; height:1px;
-  background:var(--ink);
-  opacity:.5;
+  background:rgba(255,255,255,.7);
   flex:0 0 auto;
 }
+
+/* Hero text adjustments for green background */
+.hero .eyebrow{color:rgba(255,255,255,.92)}
+.hero .eyebrow::before{background:rgba(255,255,255,.6)}
+.hero p.lead{color:rgba(255,255,255,.95)}
+
+/* Hero buttons — white primary, ghost outline */
+.hero .btn-primary{
+  background:#fff;
+  color:var(--btn);
+}
+.hero .btn-primary:hover{
+  background:var(--ink);
+  color:#fff;
+}
+.hero .btn-ghost{
+  border-color:rgba(255,255,255,.55);
+  color:#fff;
+}
+.hero .btn-ghost:hover{
+  border-color:#fff;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+
+/* Hide the hero-art block — no longer used */
+.hero-art{display:none}
 .hero p.lead{
   font-size:1.18rem;
   color:var(--ink-soft);
