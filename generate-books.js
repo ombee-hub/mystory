@@ -60,7 +60,7 @@ const tpl = (book) => `<!DOCTYPE html>
 
   <section class="book-page">
     <div class="container">
-      <a href="../books.html" class="book-back">→ חזרה לכל הספרים</a>
+      <a href="../books.html" class="book-back">חזרה לכל הספרים</a>
 
       <div class="book-detail">
         <div class="book-cover-wrap reveal">

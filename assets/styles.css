@@ -760,14 +760,17 @@ section{padding-block:var(--section)}
   padding-block:clamp(40px, 6vw, 80px) clamp(60px, 8vw, 100px);
 }
 .book-back{
-  display:inline-flex; align-items:center; gap:6px;
-  font-size:.95rem; color:var(--ink-soft);
+  display:inline-flex; align-items:center;
+  padding:10px 22px;
+  border-radius:8px;
+  background:var(--btn); color:#fff;
+  font-size:.92rem; font-weight:500;
   margin-bottom:32px;
-  transition:color .2s ease, transform .2s ease;
+  transition:background .2s ease, transform .15s ease;
 }
 .book-back:hover{
-  color:var(--btn);
-  transform:translateX(4px);
+  background:var(--btn-hover);
+  transform:translateY(-1px);
 }
 .book-detail{
   display:grid;
