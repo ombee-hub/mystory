@@ -327,7 +327,11 @@ function handleSubmit(e){
 // =========================================
 (() => {
   const KEY = 'mystory-cookies';
-  if (localStorage.getItem(KEY)) return; // already responded
+  let responded = null;
+  try{ responded = localStorage.getItem(KEY); } catch(e){}
+  if (responded) return; // already responded
+
+  const pathPrefix = /\/books\/[^/]+\.html$/.test(window.location.pathname) ? '../' : '';
 
   const banner = document.createElement('div');
   banner.className = 'cookie-banner';
@@ -337,7 +341,7 @@ function handleSubmit(e){
     <div class="cookie-icon" aria-hidden="true">🍪</div>
     <div class="cookie-content">
       <h4>אנחנו משתמשים בעוגיות</h4>
-      <p>האתר משתמש בעוגיות על מנת לשפר את חוויית הגלישה ולשמור את העדפות הנגישות שלך. <a href="privacy.html">מדיניות פרטיות</a></p>
+      <p>האתר משתמש בעוגיות על מנת לשפר את חוויית הגלישה ולשמור את העדפות הנגישות שלך. <a href="${pathPrefix}privacy.html">מדיניות פרטיות</a></p>
     </div>
     <div class="cookie-actions">
       <button class="cookie-btn cookie-decline" type="button">דחייה</button>
