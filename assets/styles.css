@@ -1087,8 +1087,9 @@ footer{
   transform:translateY(-2px);
 }
 .foot-bar{
-  background:var(--btn);
+  background:transparent;
   color:#fff;
+  border-top:1px solid rgba(245,239,223,.15);
 }
 .foot-bottom{
   padding-block:18px;
